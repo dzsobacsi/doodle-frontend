@@ -6,7 +6,8 @@ const baseURL = 'https://api-doodle-iorfo3kg6a-ew.a.run.app/'
 export async function getPrediction(image) {
   try {
     const body = {image}
-    response = await axios.post('/predict', body)
+    url = baseURL + 'predict/'
+    response = await axios.post(url, body)
     return response.data
   }
   catch (e) {
