@@ -1,6 +1,7 @@
 import axios from 'https://cdn.jsdelivr.net/npm/axios@1.6.2/+esm'
 
-axios.defaults.baseURL = 'https://0.0.0.0:8000'
+//axios.defaults.baseURL = 'https://api-doodle-iorfo3kg6a-ew.a.run.app/'
+const baseURL = 'https://api-doodle-iorfo3kg6a-ew.a.run.app/'
 
 export async function getPrediction(image) {
   try {
@@ -14,12 +15,11 @@ export async function getPrediction(image) {
 }
 
 export async function getHello() {
-  return {status: 'hello'}
-  /*try {
-    response = await axios.get(baseurl)
+  try {
+    response = await axios.get(baseURL)
     return response.data
   }
   catch (e) {
     console.error(e.message)
-  }*/
+  }
 }
