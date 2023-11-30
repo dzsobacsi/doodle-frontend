@@ -1,7 +1,7 @@
 import { getPrediction, getHello } from "./services.js"
 
 let canvas, ctx, prevPos
-const w = 600
+const w = 500
 let currPos = {x: 0, y: 0}
 let mouseDown = false
 
@@ -62,5 +62,5 @@ async function submit() {
 
 function reset() {
   ctx.clearRect(0, 0, w, w)
-  document.getElementById("prediction").innerHTML = ""
+  document.getElementById("prediction").innerHTML = "Just wondering ..."
 }
