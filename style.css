@@ -1,8 +1,14 @@
-h1 {
+h1, div {
   text-align: center;
 }
 canvas {
   border: 1px solid black;
   display: block;
   margin: auto;
+}
+#prediction {
+  margin: 10px;
+  font-weight: bold;
+  font-size: x-large;
+  color: blue;
 }

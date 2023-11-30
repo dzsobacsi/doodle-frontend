@@ -1,6 +1,6 @@
 import { getPrediction, getHello } from "./services.js"
 
-let canvas, ctx, prevPos, image
+let canvas, ctx, prevPos
 const w = 600
 let currPos = {x: 0, y: 0}
 let mouseDown = false
@@ -15,7 +15,7 @@ window.onload = function() {
   canvas.addEventListener("mouseout", () => {mouseDown = false})
   ctx = canvas.getContext("2d")
   document.getElementById("submitButton").addEventListener('click', submit)
-  document.getElementById("resetButton").addEventListener('click', () => {ctx.clearRect(0, 0, w, w)})
+  document.getElementById("resetButton").addEventListener('click', reset)
   document.getElementById("helloButton").addEventListener('click', async () => {console.log(await getHello())})
 }
 
@@ -49,9 +49,18 @@ function handleMouseClick() {
   ctx.fill()
 }
 
+function aOrAn(nextWord) {
+  return ['a', 'e', 'i', 'o', 'u'].includes(nextWord[0].toLowerCase()) ? 'an' : 'a'
+}
+
 async function submit() {
   const image = canvas.toDataURL()
   const result = await getPrediction(image)
+  document.getElementById("prediction").innerHTML = `This is ${aOrAn(result.prediction)} ${result.prediction}`
   console.log(result)
-  console.log(image)
+}
+
+function reset() {
+  ctx.clearRect(0, 0, w, w)
+  document.getElementById("prediction").innerHTML = ""
 }
