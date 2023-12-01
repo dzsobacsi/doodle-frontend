@@ -14,6 +14,8 @@ window.onload = function() {
   canvas.addEventListener("mouseup", () => {mouseDown = false})
   canvas.addEventListener("mouseout", () => {mouseDown = false})
   ctx = canvas.getContext("2d")
+  ctx.fillStyle = '#ffffff'
+  ctx.fillRect(0, 0, w, w)
   document.getElementById("submitButton").addEventListener('click', submit)
   document.getElementById("resetButton").addEventListener('click', reset)
   document.getElementById("helloButton").addEventListener('click', async () => {console.log(await getHello())})
@@ -54,13 +56,15 @@ function aOrAn(nextWord) {
 }
 
 async function submit() {
-  const image = canvas.toDataURL()
+  const image = canvas.toDataURL('image/jpeg', 1.0)
   const result = await getPrediction(image)
-  document.getElementById("prediction").innerHTML = `This is ${aOrAn(result.prediction)} ${result.prediction}`
+  document.getElementById("prediction").innerHTML = `This is ${aOrAn(result.Draw)} ${result.Draw}`
   console.log(result)
 }
 
 function reset() {
   ctx.clearRect(0, 0, w, w)
+  ctx.fillStyle = '#ffffff'
+  ctx.fillRect(0, 0, w, w)
   document.getElementById("prediction").innerHTML = "Just wondering ..."
 }
