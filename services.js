@@ -13,7 +13,7 @@ export async function getPrediction(image) {
   }
 }
 
-export async function getHello() {
+/*export async function getHello() {
   try {
     const response = await axios.get()
     return response.data
@@ -21,4 +21,4 @@ export async function getHello() {
   catch (e) {
     console.error(e.message)
   }
-}
+}*/
