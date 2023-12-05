@@ -10,6 +10,7 @@ window.onload = function() {
   canvas = document.getElementById("myCanvas")
   canvas.width = canvas.height = w
   canvas.addEventListener("mousemove", handleMousemove)
+  canvas.addEventListener("touchmove", handleMousemove)
   canvas.addEventListener("click", handleMouseClick)
   canvas.addEventListener("mousedown", () => {mouseDown = true})
   canvas.addEventListener("mouseup", () => {mouseDown = false})
