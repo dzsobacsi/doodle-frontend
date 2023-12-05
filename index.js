@@ -22,7 +22,7 @@ window.onload = function() {
   ctx.fillRect(0, 0, w, w)
   document.getElementById("submitButton").addEventListener('click', submit)
   document.getElementById("resetButton").addEventListener('click', reset)
-  document.getElementById("helloButton").addEventListener('click', async () => {console.log(await getHello())})
+  //document.getElementById("helloButton").addEventListener('click', async () => {console.log(await getHello())})
   document.getElementById("drawButton").addEventListener('click', handleDrawButton)
   document.getElementById("eraseButton").addEventListener('click', handleEraseButton)
 }
