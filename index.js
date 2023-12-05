@@ -1,4 +1,4 @@
-import { getPrediction, getHello } from "./services.js"
+import { getPrediction } from "./services.js"
 
 let canvas, ctx, prevPos, device
 const w = 500
