@@ -1,20 +1,22 @@
 import { getPrediction, getHello } from "./services.js"
 
-let canvas, ctx, prevPos
+let canvas, ctx, prevPos, device
 const w = 500
 let currPos = {x: 0, y: 0}
 let mouseDown = false
 let drawMode = true
 
 window.onload = function() {
+  device = window.innerWidth <= 768 ? 'mobile' : 'desktop'
   canvas = document.getElementById("myCanvas")
-  canvas.width = canvas.height = w
+  canvas.width = canvas.height = Math.min(w, window.innerWidth - 50)
   canvas.addEventListener("mousemove", handleMousemove)
-  canvas.addEventListener("touchmove", handleMousemove)
   canvas.addEventListener("click", handleMouseClick)
   canvas.addEventListener("mousedown", () => {mouseDown = true})
   canvas.addEventListener("mouseup", () => {mouseDown = false})
   canvas.addEventListener("mouseout", () => {mouseDown = false})
+  canvas.addEventListener("touchstart", updatePos)
+  canvas.addEventListener("touchmove", handleMousemove)
   ctx = canvas.getContext("2d")
   ctx.fillStyle = '#ffffff'
   ctx.fillRect(0, 0, w, w)
@@ -23,6 +25,11 @@ window.onload = function() {
   document.getElementById("helloButton").addEventListener('click', async () => {console.log(await getHello())})
   document.getElementById("drawButton").addEventListener('click', handleDrawButton)
   document.getElementById("eraseButton").addEventListener('click', handleEraseButton)
+}
+
+function updatePos(evt) {
+  prevPos = {...currPos}
+  currPos = device == 'mobile' ? getTouchPos(canvas, evt) : getMousePos(canvas, evt)
 }
 
 function getMousePos(canvas, evt) {
@@ -34,10 +41,19 @@ function getMousePos(canvas, evt) {
   }
 }
 
+function getTouchPos(canvas, evt) {
+  //This function gets the mouse position and returns with an object:  {x, y}
+  const touch = evt.touches[0]
+  return {
+    x: touch.clientX - canvas.offsetLeft,
+    y: touch.clientY - canvas.offsetTop,
+  }
+}
+
 function handleMousemove(evt) {
-  prevPos = {...currPos}
-  currPos = getMousePos(canvas, evt)
-  if (mouseDown) {
+  evt.preventDefault()
+  updatePos(evt)
+  if (mouseDown || device == 'mobile') {
     ctx.beginPath()
     ctx.moveTo(prevPos.x, prevPos.y)
     ctx.lineTo(currPos.x, currPos.y)
