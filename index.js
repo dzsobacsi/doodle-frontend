@@ -17,9 +17,11 @@ window.onload = function() {
   canvas.addEventListener("mouseout", () => {mouseDown = false})
   canvas.addEventListener("touchstart", updatePos)
   canvas.addEventListener("touchmove", handleMousemove)
+
   ctx = canvas.getContext("2d")
   ctx.fillStyle = '#ffffff'
   ctx.fillRect(0, 0, w, w)
+
   document.getElementById("submitButton").addEventListener('click', submit)
   document.getElementById("resetButton").addEventListener('click', reset)
   //document.getElementById("helloButton").addEventListener('click', async () => {console.log(await getHello())})
@@ -97,7 +99,6 @@ async function submit() {
 }
 
 function reset() {
-  ctx.clearRect(0, 0, w, w)
   ctx.fillStyle = '#ffffff'
   ctx.fillRect(0, 0, w, w)
   document.getElementById("prediction").innerHTML = "Just wondering ..."
