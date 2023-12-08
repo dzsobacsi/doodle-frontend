@@ -91,7 +91,7 @@ async function submit() {
   document.getElementById("prediction").innerHTML = `
     This is ${aOrAn(guesses[0])} ${guesses[0]} (${(values[0] * 100).toFixed(1)}%)
   `
-  if (values[1] > 0.2) {
+  if (values[1] > 0.1) {
     document.getElementById("prediction").innerHTML += `
     <br>hmmm... or maybe ${aOrAn(guesses[1])} ${guesses[1]}? (${(values[1] * 100).toFixed(1)}%)`
   }
