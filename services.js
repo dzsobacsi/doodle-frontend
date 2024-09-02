@@ -1,7 +1,8 @@
 import axios from 'https://cdn.jsdelivr.net/npm/axios@1.6.2/+esm'
 
-//axios.defaults.baseURL = 'https://api-doodle-iorfo3kg6a-uc.a.run.app/'
-axios.defaults.baseURL = 'https://64.225.93.200'
+//axios.defaults.baseURL = 'http://localhost:8000'
+axios.defaults.baseURL = 'http://64.225.93.200:8000'
+axios.defaults.timeout = 3000
 
 export async function getPrediction(image) {
   try {

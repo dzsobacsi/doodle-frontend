@@ -1,3 +1,5 @@
 node_modules
 .python-version
 test.ipynb
+package-lock.json
+payload.txt

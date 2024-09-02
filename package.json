@@ -1,15 +1,23 @@
 {
-  "name": "doodle-classifier-frontend",
+  "name": "doodle-frontend",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is the frontend of our Doodle classifier, created as a project during the Le Wagon Data Science and AI bootcamp in December 2023. It can recognize 20 categories from the beginning of the English alphabet. Try drawing things like an apple, an axe, an ambulance, an angel, a baseball, or anything else you can see in the background image.",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Tamas Berki",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dzsobacsi/doodle-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dzsobacsi/doodle-frontend/issues"
+  },
+  "homepage": "https://github.com/dzsobacsi/doodle-frontend#readme"
 }
